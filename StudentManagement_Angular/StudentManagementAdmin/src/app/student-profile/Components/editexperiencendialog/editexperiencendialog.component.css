@@ -1,0 +1,15 @@
+.edit-experience-dialog {
+  width: 100%;
+  max-width: 500px; /* keeps dialog neat */
+}
+
+.edit-experience-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* space between fields */
+  padding: 10px;
+}
+
+.full-width-field {
+  width: 100%;
+}

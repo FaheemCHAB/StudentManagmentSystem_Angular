@@ -1,0 +1,68 @@
+<style>
+  @media (min-width: 1200px) {
+    .col-xxl-5ths {
+      flex: 0 0 auto;
+      width: 20%;
+    }
+  }
+</style>
+
+<div style="font-family: 'Playfair Display', serif;">
+  <h2 class="text-center mb-5 text-primary fw-bold" style="font-size: 2.5rem;">
+    Enrolled Students
+  </h2>
+
+  <!-- Search Bar + List Button -->
+  <div class="search-bar-container mb-5 mx-auto" style="max-width: 600px;">
+    <div class="input-group shadow-sm rounded-pill overflow-hidden">
+      <span class="input-group-text bg-primary text-white border-0 px-4">
+        <i class="bi bi-search"></i>
+      </span>
+      <input
+        type="text"
+        class="form-control form-control-lg border-0"
+        placeholder="Search enrolled student by name..."
+        (input)="onSearchInput($event)"
+      />
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <button class="btn btn-outline-primary rounded-pill px-4 shadow-sm" (click)="onListStudents()">
+        <i class="bi bi-list-ul me-2"></i> List Students
+      </button>
+    </div>
+  </div>
+
+  <!-- No Results -->
+  <div *ngIf="filteredStudents.length === 0 && (searchTerm || showStudentList)" class="alert alert-warning text-center rounded-pill shadow-sm" role="alert">
+    <ng-container *ngIf="enrolledStudents.length > 0; else noEnrolled">
+      No enrolled students found matching "<strong>{{ searchTerm }}</strong>".
+    </ng-container>
+    <ng-template #noEnrolled>
+      <strong>No enrolled students available.</strong>
+    </ng-template>
+  </div>
+
+  <!-- Student Cards -->
+  <div class="row g-4" *ngIf="filteredStudents.length > 0">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-5ths" *ngFor="let student of filteredStudents.slice().reverse()">
+      <div class="card h-100 border-0 shadow-lg rounded-4 bg-white">
+        <div class="card-body">
+          <h5 class="card-title text-success fw-bold"> 🧑‍🎓 {{ student.firstName }} {{ student.lastName }}</h5>
+          <p class="card-text text-secondary mb-1">
+            📧 <strong>Email:</strong> {{ student.email }}
+          </p>
+          <p class="card-text text-secondary mb-1">
+            📞 <strong>Phone:</strong> {{ student.phone }}
+          </p>
+          <p class="card-text text-secondary">
+            📍 <strong>Address:</strong> {{ student.address }}
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 d-flex justify-content-end">
+          <button class="btn btn-primary" (click)="viewProfile(student)">View Profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

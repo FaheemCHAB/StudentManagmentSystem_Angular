@@ -1,0 +1,27 @@
+.college-form-container {
+  max-width: 700px;
+  margin-left: 170px;
+  padding: 24px;
+  overflow-y: hidden; /* prevent vertical scroll */
+  border-radius: 12px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+.btn-wrapper {
+  margin-top: 24px;
+  text-align: right;
+}
+.form-title {
+  color: #3f51b5;
+  margin-bottom: 24px;
+  text-align: center;
+}

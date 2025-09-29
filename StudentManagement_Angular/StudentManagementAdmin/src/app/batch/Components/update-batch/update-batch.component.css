@@ -1,0 +1,95 @@
+.batch-form-card {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 16px;
+}
+mat-card-header {
+  padding-bottom: 0; /* reduce bottom padding to bring title up */
+}
+
+.form-title {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-align: center;
+  margin-top: 12px;
+  margin-bottom: 40px;
+  margin-left: 200px;
+}
+/* .form-title {
+  font-weight: 600;
+  font-size: 1.8rem;
+} */
+
+.form-row {
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.time-label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.time-period-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.time-field {
+  flex: 2;
+  min-width: 120px;
+}
+
+.period-field {
+  flex: 1;
+  min-width: 90px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+}
+
+.cancel-button {
+  margin-left: 10px;
+}
+.form-actions {
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.update-btn {
+  background-color: #69c0f3; /* green */
+  color: #69c0f3;
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.update-btn:hover {
+  background-color: #629cf1;
+}
+
+.cancel-btn {
+  background-color: #f85b5b; /* soft red */
+  color: rgb(252, 99, 99);
+  font-weight: 500;
+  border-radius: 8px;
+  padding: 8px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #ff9d9d;
+}

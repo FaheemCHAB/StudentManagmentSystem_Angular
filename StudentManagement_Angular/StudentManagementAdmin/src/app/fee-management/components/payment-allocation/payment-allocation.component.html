@@ -1,0 +1,83 @@
+<mat-card class="fee-form-card">
+  <h2 mat-card-title class="form-title mat-primary"
+    style="text-align: center; margin-bottom: 16px;color: rgb(17, 17, 142);font-size: xx-large;font-family: 'Times New Roman', Times, serif;">
+    Fee Installment Details
+  </h2>
+
+  <table mat-table [dataSource]="Installments" class="mat-elevation-z2"
+    style="width: 100%; border-radius: 8px; overflow: hidden;">
+
+    <ng-container matColumnDef="installmentNumber">
+      <th mat-header-cell *matHeaderCellDef class="fee-table-header">Installment #</th>
+      <td mat-cell *matCellDef="let i">{{ i.installmentNumber }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef class="fee-table-header">Amount</th>
+      <td mat-cell *matCellDef="let i">{{ i.amount }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentReceivedAmount">
+      <th mat-header-cell *matHeaderCellDef>Current Received</th>
+      <td mat-cell *matCellDef="let i; let idx = index">
+        <input matInput type="number" min="0" [(ngModel)]="i.currentReceivedAmount" (ngModelChange)="updateBalance(idx)"
+          placeholder="Enter received amount" ><span *ngIf="i.status === InstallmentStatus.Paid" >
+  
+</span>
+      </td>
+    </ng-container>
+
+    <!-- Total Received (readonly) -->
+    <ng-container matColumnDef="totalReceived">
+      <th mat-header-cell *matHeaderCellDef>Total Received</th>
+      <td mat-cell *matCellDef="let i">
+        {{ i.totalReceived }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="balanceAmount">
+      <th mat-header-cell *matHeaderCellDef class="fee-table-header">Balance</th>
+      <td mat-cell *matCellDef="let i">
+        {{ i.balanceAmount || 0 }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef class="fee-table-header">Status</th>
+      <td mat-cell *matCellDef="let i">
+        <mat-select [(ngModel)]="i.status">
+          <mat-option *ngFor="let status of installmentStatusOptions" [value]="status.value">
+            {{ status.label }}
+          </mat-option>
+        </mat-select>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="paymentMode">
+      <th mat-header-cell *matHeaderCellDef class="fee-table-header">Payment Mode</th>
+      <td mat-cell *matCellDef="let i">
+        <mat-select [(ngModel)]="i.paymentMode">
+          <mat-option [value]="0">Cash</mat-option>
+          <mat-option [value]="1">Card</mat-option>
+          <mat-option [value]="2">Online</mat-option>
+        </mat-select>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="remarks">
+      <th mat-header-cell *matHeaderCellDef class="fee-table-header">Remarks</th>
+      <td mat-cell *matCellDef="let i">
+        <input matInput [(ngModel)]="i.remarks">
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+
+  <div style="margin-top: 20px; text-align: right;">
+    <button mat-raised-button color="primary" (click)="onSubmit()">Submit</button>&nbsp;&nbsp;
+    <button mat-button mat-dialog-close color="primary">Close</button>
+  </div>
+</mat-card>

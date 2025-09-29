@@ -1,0 +1,60 @@
+<div class="college-form-container mat-elevation-z4">
+  <h2 class="form-title mat-primary">🎓 Add New College</h2>
+
+  <!-- Success Message -->
+  <mat-card *ngIf="showMessage" class="success-message">
+    ✅ College added successfully!
+  </mat-card>
+
+  <form [formGroup]="collegeForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>College Name</mat-label>
+        <input matInput formControlName="collegeName" placeholder="Enter college name" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Location</mat-label>
+        <input matInput formControlName="location" placeholder="Enter location" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>District</mat-label>
+        <input matInput formControlName="district" placeholder="Enter District" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>State</mat-label>
+        <input matInput formControlName="state" placeholder="Enter State" />
+      </mat-form-field>
+
+      <!-- Phone Number and Description in same row -->
+      <mat-form-field appearance="outline" class="form-group phone-compact">
+  <mat-label>Phone Number</mat-label>
+  <input matInput
+         type="tel"
+         maxlength="10"
+         pattern="[0-9]{10}"
+         formControlName="phone"
+         placeholder="Enter phone number"
+         (keypress)="onlyNumber($event)" />
+  <mat-error *ngIf="collegeForm.get('phone')?.touched && collegeForm.get('phone')?.hasError('pattern')">
+    ⚠️ Please enter a valid 10-digit phone number.
+  </mat-error>
+</mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" placeholder="Enter description" rows="1"></textarea>
+      </mat-form-field>
+    </div>
+    <div *ngIf="errorMessage" style="color: red; margin-bottom: 16px;">
+      {{errorMessage}}
+    </div>
+    <div class="btn-wrapper">
+      <button mat-raised-button color="primary" type="submit" [disabled]="collegeForm.invalid">
+        ➕ Add College
+      </button>
+    </div>
+  </form>
+</div>

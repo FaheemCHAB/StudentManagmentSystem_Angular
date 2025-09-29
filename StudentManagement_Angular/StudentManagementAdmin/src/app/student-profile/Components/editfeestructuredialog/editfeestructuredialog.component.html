@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Edit Fee Structure</h2>
+<mat-dialog-content>
+  <form [formGroup]="feeStructureForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Installment ID</mat-label>
+      <input matInput formControlName="installmentId" readonly required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Total Installments</mat-label>
+      <input matInput formControlName="totalInstallment" type="number" required>
+      <mat-error *ngIf="feeStructureForm.get('totalInstallment')?.hasError('required')">
+        Total Installments is required
+      </mat-error>
+      <mat-error *ngIf="feeStructureForm.get('totalInstallment')?.hasError('min')">
+        Total Installments must be at least 1
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!feeStructureForm.valid">Save</button>
+</mat-dialog-actions>
