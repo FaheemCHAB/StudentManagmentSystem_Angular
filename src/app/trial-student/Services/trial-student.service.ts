@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/app/environment/environment';
+import { environment } from 'src/environment/environment';
 import { trialStudent } from '../Models/trialStudent';
 import { map, catchError } from 'rxjs/operators';
 import { of, throwError } from 'rxjs';

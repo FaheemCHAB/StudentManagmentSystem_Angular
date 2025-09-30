@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { qualification } from '../Models/qualification';
-import { environment } from 'src/app/environment/environment';
+import { environment } from 'src/environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 @Injectable({

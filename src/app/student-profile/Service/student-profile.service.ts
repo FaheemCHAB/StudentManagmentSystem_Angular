@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { studentProfile } from '../Models/ProfileModels';
-import { environment } from 'src/app/environment/environment';
+import { environment } from 'src/environment/environment';
 import { qualifications } from '../Models/ProfileModels';
 import { experience } from '../Models/ProfileModels';
 import { feeStructure } from '../Models/ProfileModels';

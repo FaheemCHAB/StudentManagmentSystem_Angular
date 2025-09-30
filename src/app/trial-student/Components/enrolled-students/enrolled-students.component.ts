@@ -4,7 +4,7 @@ import { trialStudent } from '../../Models/trialStudent';
 import { Router } from '@angular/router';
 import { studentProfile } from 'src/app/student-profile/Models/ProfileModels';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/app/environment/environment';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-enrolled-students',
