@@ -47,7 +47,7 @@
       <mat-form-field appearance="outline" class="full-width" *ngIf="!feePaymentForm.value.trialStudentId">
         <mat-label>Course</mat-label>
         <mat-select formControlName="courseId" (selectionChange)="onCourseSelect($event.value)">
-          <mat-select-trigger>{{ selectedCourse?.courseName }}</mat-select-trigger>
+          <mat-select-trigger>{{ selectedCourse.courseName }}</mat-select-trigger>
           <mat-option *ngFor="let c of courseList" [value]="c">
             {{ c.course.courseName }}
           </mat-option>
