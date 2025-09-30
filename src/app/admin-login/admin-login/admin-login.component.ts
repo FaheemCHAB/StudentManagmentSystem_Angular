@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router'; // ✅ Import router
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-admin-login',
@@ -28,8 +29,7 @@ export class AdminLoginComponent {
     if (this.loginForm.invalid) return;
 
     this.loading = true;
-
-    this.http.post<any>('https://localhost:7183/api/v1/login', this.loginForm.value)
+    this.http.post<any>(`${environment.baseurl}/login`, this.loginForm.value)
       .subscribe({
         next: (res) => {
           this.message = res?.message || 'Login successful';
