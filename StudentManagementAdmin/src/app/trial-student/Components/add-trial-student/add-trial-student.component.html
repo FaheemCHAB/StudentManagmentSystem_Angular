@@ -1,0 +1,64 @@
+
+<div class="form-container mat-elevation-z4" style="margin-top: 50px;">
+  <h2 class="form-title mat-primary">🎓 Add Trial Student</h2>
+
+  <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+        <mat-error *ngIf="studentForm.get('firstName')?.touched && studentForm.get('firstName')?.hasError('required')">
+          First Name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+        <mat-error *ngIf="studentForm.get('lastName')?.touched && studentForm.get('lastName')?.hasError('required')">
+          Last Name is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field full-width">
+        <mat-label>Address</mat-label>
+        <textarea matInput formControlName="address" rows="3"></textarea>
+        <mat-error *ngIf="studentForm.get('address')?.touched && studentForm.get('address')?.hasError('required')">
+          Address is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+        <mat-error *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.hasError('email')">
+          Enter a valid email address.
+        </mat-error>
+        <mat-error *ngIf="studentForm.get('email')?.touched && studentForm.get('email')?.hasError('required')">
+          Email is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" type="tel" pattern="[0-9]{10}" maxlength="10" />
+        <mat-error *ngIf="studentForm.get('phone')?.touched && studentForm.get('phone')?.hasError('required')">
+          Phone number is required.
+        </mat-error>
+        <mat-error *ngIf="studentForm.get('phone')?.touched && studentForm.get('phone')?.hasError('pattern')">
+          Enter a valid 10-digit phone number.
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div *ngIf="errorMessage" style="color: red; margin-bottom: 16px;">
+      {{errorMessage}}
+    </div>
+    <div class="btn-wrapper">
+      <button mat-raised-button color="primary" type="submit" [disabled]="studentForm.invalid">
+        ➕ Submit
+      </button>
+    </div>
+  </form>
+</div>

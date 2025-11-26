@@ -1,0 +1,110 @@
+.dashboard-wrapper {
+  padding: 40px;
+  background-color: #f4f6f8;
+  min-height: 100vh;
+  text-align: center;
+  overflow: hidden;
+}
+
+.dashboard-title {
+  font-size: 42px;
+  font-weight: 800;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-height: calc(100vh - 180px); /* Adjusted to avoid overflow */
+ 
+  padding-bottom: 20px;
+}
+.dashboard-card {
+  text-decoration: none;
+  color: white;
+  border-radius: 20px;
+  padding: 30px;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); /* default fallback gradient */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+   align-items: center;
+  text-align: center;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.icon {
+  font-size: 66px;
+  background-color: #ffffff;      /* Solid white background */
+  color: #333333;                 /* Dark icon color */
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  width: 100px;
+  height: 100px;
+}
+
+
+.info {
+  margin-top: auto;
+}
+
+.label {
+  font-size: 20px;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-top: 10px;
+}
+
+.count {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Unique Color Themes */
+.student {
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
+}
+.college {
+  background: linear-gradient(135deg, #36d1dc, #5b86e5);
+}
+.course {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+.batch {
+  background: linear-gradient(135deg, #8e2de2, #8d6bd1);
+}
+.report {
+  background: linear-gradient(135deg, #11998e, #38ef7d);
+}
+.trial {
+  background: linear-gradient(135deg, #f953c6, #b91d73);
+}

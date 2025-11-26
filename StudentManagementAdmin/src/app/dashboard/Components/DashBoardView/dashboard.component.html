@@ -1,0 +1,56 @@
+<div class="dashboard-wrapper">
+  <h1 class="dashboard-title">Welcome Admin</h1>
+
+  <div class="dashboard-grid">
+    
+    <a routerLink="/home/trialStudent/ViewTrialStudent" class="dashboard-card student">
+      <mat-icon class="icon">person</mat-icon>
+      <div class="info">
+        <p class="label">Trial Students</p>
+        <p class="count">{{ studentCount }}</p>
+      </div>
+    </a>
+
+    <a routerLink="/home/college" class="dashboard-card college">
+      <mat-icon class="icon">school</mat-icon>
+      <div class="info">
+        <p class="label">Colleges</p>
+        <p class="count">{{ collegeCount }}</p>
+      </div>
+    </a>
+
+    <a routerLink="/home/course" class="dashboard-card course">
+      <mat-icon class="icon">menu_book</mat-icon>
+      <div class="info">
+        <p class="label">Courses</p>
+        <p class="count">{{ courseCount }}</p>
+      </div>
+    </a>
+
+    <a routerLink="/home/batch" class="dashboard-card batch">
+      <mat-icon class="icon">schedule</mat-icon>
+      <div class="info">
+        <p class="label">Batches</p>
+        <p class="count">{{ batchCount }}</p>
+      </div>
+    </a>
+
+     <a routerLink="/home/report" class="dashboard-card report">
+      <mat-icon class="icon">bar_chart</mat-icon>
+      <div class="info">
+        <p class="label">Reports</p>
+        <!-- <p class="count">{{ reportcount }}</p> -->
+      </div>
+    </a>
+
+
+    
+     <a routerLink="/home/trialStudent/EnrolledStudents" class="dashboard-card trial">
+      <mat-icon class="icon">how_to_reg</mat-icon>
+      <div class="info">
+        <p class="label">Enrolled Students</p>
+        <p class="count">{{ enrolledCount }}</p>
+      </div>
+    </a>
+  </div>
+</div>

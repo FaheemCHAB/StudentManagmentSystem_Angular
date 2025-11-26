@@ -1,0 +1,65 @@
+<h2 mat-dialog-title>Edit Course Details</h2>
+<mat-dialog-content>
+  <form [formGroup]="courseDetailsForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Course</mat-label>
+      <mat-select formControlName="courseId" required>
+        <mat-option *ngFor="let course of courses" [value]="course.courseId">
+          {{ course.courseName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="courseDetailsForm.get('courseId')?.hasError('required') && courseDetailsForm.get('courseId')?.touched">
+        Course is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Batch</mat-label>
+      <mat-select formControlName="batchId" required>
+        <mat-option *ngFor="let batch of batches" [value]="batch.batchId">
+          {{ batch.batchName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="courseDetailsForm.get('batchId')?.hasError('required') && courseDetailsForm.get('batchId')?.touched">
+        Batch is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Time Slot</mat-label>
+      <input matInput formControlName="timeSlot" required>
+      <mat-error *ngIf="courseDetailsForm.get('timeSlot')?.hasError('required') && courseDetailsForm.get('timeSlot')?.touched">
+        Time Slot is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+  <mat-label>Status</mat-label>
+  <mat-select formControlName="status" [compareWith]="compareEnum">
+    <mat-option *ngFor="let status of statusOptions" [value]="status">
+      {{ statusLabels[status] }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="courseDetailsForm.get('status')?.hasError('required') && courseDetailsForm.get('status')?.touched">
+    Status is required
+  </mat-error>
+</mat-form-field>
+
+    <mat-form-field appearance="outline">
+  <mat-label>Mode</mat-label>
+  <mat-select formControlName="mode" [compareWith]="compareEnum">
+    <mat-option *ngFor="let m of modeOptions" [value]="m">
+      {{ modeLabels[m] }}
+   
+      <mat-error *ngIf="courseDetailsForm.get('mode')?.hasError('required') && courseDetailsForm.get('mode')?.touched">
+        Mode is required
+      </mat-error>
+       </mat-option>
+  </mat-select>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!courseDetailsForm.valid">Save</button>
+</mat-dialog-actions>

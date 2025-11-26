@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Edit Qualification</h2>
+<mat-dialog-content>
+  <form [formGroup]="qualificationForm">
+    <!-- <mat-form-field appearance="fill">
+      <mat-label>Qualification ID</mat-label>
+      <input matInput formControlName="qualificationId" readonly>
+    </mat-form-field> -->
+    <mat-form-field appearance="fill">
+      <mat-label>College Name</mat-label>
+      <mat-select formControlName="collegeName" required>
+        <mat-option *ngFor="let college of colleges" [value]="college.collegeName">
+          {{ college.collegeName }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="qualificationForm.get('collegeName')?.hasError('required') && qualificationForm.get('collegeName')?.touched">
+        College Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Qualification Name</mat-label>
+      <input matInput formControlName="qualificationName" required>
+      <mat-error *ngIf="qualificationForm.get('qualificationName')?.hasError('required') && qualificationForm.get('qualificationName')?.touched">
+        Qualification Name is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Pass Out Year</mat-label>
+      <input matInput formControlName="passOutYear" type="text" required>
+      <mat-error *ngIf="qualificationForm.get('passOutYear')?.hasError('required') && qualificationForm.get('passOutYear')?.touched">
+        Pass Out Year is required
+      </mat-error>
+      <mat-error *ngIf="qualificationForm.get('passOutYear')?.hasError('pattern') && qualificationForm.get('passOutYear')?.touched">
+        Must be a 4-digit year (e.g., 2020)
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!qualificationForm.valid">Save</button>
+</mat-dialog-actions>
