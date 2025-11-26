@@ -1,0 +1,111 @@
+<!-- <div class="same-width-box">
+  <div class="progress-wrapper">
+    <mat-progress-bar
+      mode="determinate"
+      [value]="progressValue"
+      color="primary"
+      class="progress-bar"
+    ></mat-progress-bar>
+
+    <div class="steps-container">
+      <div
+        *ngFor="let step of steps; let i = index"
+        class="step-circle"
+        [class.active]="i <= currentStep"
+        [style.left.%]="(i / (steps.length - 1)) * 100"
+      >
+        {{ i + 1 }}
+      </div>
+    </div>
+
+    <div class="step-labels">
+      <div
+        *ngFor="let step of steps; let i = index"
+        class="step-label"
+        [style.left.%]="(i / (steps.length - 1)) * 100"
+      >
+        {{ step.label }}
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="same-width-box">
+<div class="progress-wrapper">
+  <mat-progress-bar
+    mode="determinate"
+    [value]="progressValue"
+    color="primary"
+    class="progress-bar"
+  ></mat-progress-bar>
+
+  <!-- Step Circles -->
+  <div class="steps-container">
+    <div
+      *ngFor="let step of steps; let i = index"
+      class="step-circle"
+      [class.active]="i <= currentStep"
+      [style.left.%]="(i / (steps.length - 1)) * 100"
+    >
+      {{ i + 1 }}
+    </div>
+  </div>
+
+  <!-- Step Labels -->
+  <div class="step-labels">
+    <div
+      *ngFor="let step of steps; let i = index"
+      class="step-label"
+      [style.left.%]="(i / (steps.length - 1)) * 100"
+    >
+      {{ step.label }}
+    </div>
+  </div>
+</div>
+</div>
+
+
+<div class="form-container">
+  <h2>Add Experience</h2>
+  <form [formGroup]="experienceForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <mat-label>Position</mat-label>
+      <input matInput formControlName="position" required>
+      <mat-error *ngIf="experienceForm.get('position')?.hasError('required')">
+        Position is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Company Name</mat-label>
+      <input matInput formControlName="companyName" required>
+      <mat-error *ngIf="experienceForm.get('companyName')?.hasError('required')">
+        Company Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Total Experience (years)</mat-label>
+      <input matInput formControlName="totalExperience" type="text" step="0.1" required>
+      <mat-error *ngIf="experienceForm.get('totalExperience')?.hasError('required')">
+        Total Experience is required
+      </mat-error>
+      <mat-error *ngIf="experienceForm.get('totalExperience')?.hasError('pattern')">
+        Must be a valid number (up to 2 decimal places)
+      </mat-error>
+      <mat-error *ngIf="totalExperienceErrors?.['invalidExperience']">
+        Experience cannot be negative
+      </mat-error>
+      <mat-error *ngIf="totalExperienceErrors?.['experienceExceedsAge']">
+        Total experience exceeds allowable years based on age (16+)
+      </mat-error>
+    </mat-form-field>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!experienceForm.valid">
+        Save & Next
+      </button>
+    </div>
+
+    <p *ngIf="showMessage" class="success-message">Experience added successfully!</p>
+  </form>
+</div>
