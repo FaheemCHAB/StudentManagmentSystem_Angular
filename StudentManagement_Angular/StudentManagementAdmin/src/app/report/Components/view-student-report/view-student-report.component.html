@@ -1,0 +1,43 @@
+<div class="container mt-4">
+  <h2 class="mb-3 text-center">Student Fee Report</h2>
+
+  <div class="mb-4 p-3 border rounded bg-light">
+    <h4>{{ studentName }}</h4>
+    <p><strong>Course:</strong> {{ courseName }}</p>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-primary">
+      <tr>
+        <th>No</th>
+        <th>Installment</th>
+        <th>Due Date</th>
+        <th>Amount (₹)</th>
+        <th>Received (₹)</th>
+        <th>Balance (₹)</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let fee of studentFees; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td>{{ fee.installmentNumber }}</td>
+        <td>{{ fee.dueDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ fee.amount }}</td>
+        <td>{{ fee.amountReceived }}</td>
+        <td>{{ getBalance(fee) }}</td>
+        <td>
+          {{
+            fee.status === 0 ? 'Paid' :
+            fee.status === 1 ? 'Partially Paid' :
+            fee.status === 2 ? 'Pending' : ''
+          }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="studentFees.length === 0" class="alert alert-info text-center mt-4">
+    No fee records found for this student.
+  </div>
+</div>

@@ -1,0 +1,122 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+  font-family: Roboto, sans-serif;
+  background: #f2f2f2;
+}
+
+.course-details-form {
+  max-width: 600px;
+  max-height: 85vh;
+  margin: auto;
+  margin-top: 5%;
+  padding: 16px 24px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  margin-left: 250px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 12px;
+  font-size: 22px;
+  color: #3f51b5;
+}
+
+/* Grid layout for form fields */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+/* Optional: use 2 columns on wider screens */
+@media (min-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.progress-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 30px 0;
+}
+
+.progress-bar {
+  height: 8px;
+  border-radius: 4px;
+  position: relative;
+  top: 16px;
+  z-index: 1;
+}
+
+.steps-container {
+  position: absolute;
+  left: 0;
+  top: 16px;
+  width: 100%;
+  z-index: 3;
+}
+
+.step-circle {
+  position: absolute;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  background: #ccc;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.step-circle.active {
+  background: #3f51b5;
+  box-shadow: 0 0 10px #3f51b5;
+}
+
+.step-labels {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.step-label {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: #333;
+  white-space: nowrap;
+}
+.same-width-box {
+  max-width: 600px;
+ margin-left: 250px;
+  /* padding: 16px; */
+  /* background-color: #f5f5f5; */
+  border-radius: 8px;
+  text-align: center;
+  
+  /* box-shadow: 0 0 6px rgba(0,0,0,0.1); */
+}

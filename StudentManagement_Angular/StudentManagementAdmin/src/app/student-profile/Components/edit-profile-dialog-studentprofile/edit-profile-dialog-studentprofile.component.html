@@ -1,0 +1,73 @@
+<h2 mat-dialog-title>Edit Student Profile</h2>
+<mat-dialog-content>
+  <form [formGroup]="profileForm">
+    <div class="form-grid">
+      <!-- First Name -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="Enter First Name" />
+        <mat-error *ngIf="profileForm.get('firstName')?.hasError('required')">First Name is required</mat-error>
+      </mat-form-field>
+
+      <!-- Last Name -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Enter Last Name" />
+        <mat-error *ngIf="profileForm.get('lastName')?.hasError('required')">Last Name is required</mat-error>
+      </mat-form-field>
+
+      <!-- Address -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" placeholder="Enter Address" />
+        <mat-error *ngIf="profileForm.get('address')?.hasError('required')">Address is required</mat-error>
+      </mat-form-field>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Enter Email" />
+        <mat-error *ngIf="profileForm.get('email')?.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="profileForm.get('email')?.hasError('email')">Invalid email format</mat-error>
+      </mat-form-field>
+
+      <!-- Phone -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" placeholder="Enter Phone" />
+        <mat-error *ngIf="profileForm.get('phone')?.hasError('required')">Phone is required</mat-error>
+      </mat-form-field>
+
+      <!-- Date of Birth -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Date of Birth</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="dob"
+          placeholder="Choose Date"
+          (dateChange)="onDobChange($event.value)"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="profileForm.get('dob')?.hasError('required')">Date of Birth is required</mat-error>
+      </mat-form-field>
+
+      <!-- Referred By -->
+      <mat-form-field appearance="outline" class="form-group">
+        <mat-label>Referred By</mat-label>
+        <mat-select formControlName="referredBy">
+          <mat-option *ngFor="let option of referenceOptions" [value]="option.value">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="profileForm.get('referredBy')?.hasError('required')">Referred By is required</mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="!profileForm.valid">Save</button>
+</mat-dialog-actions>

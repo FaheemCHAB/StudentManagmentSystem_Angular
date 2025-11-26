@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Edit Experience</h2>
+
+<mat-dialog-content class="edit-experience-dialog">
+  <form [formGroup]="editForm" class="edit-experience-form">
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Position</mat-label>
+      <input matInput formControlName="position" placeholder="Enter Position" />
+      <mat-error *ngIf="editForm.get('position')?.hasError('required')">
+        Position is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Company Name</mat-label>
+      <input matInput formControlName="companyName" placeholder="Enter Company Name" />
+      <mat-error *ngIf="editForm.get('companyName')?.hasError('required')">
+        Company Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width-field">
+      <mat-label>Total Experience (years)</mat-label>
+      <input matInput formControlName="totalExperience" placeholder="Enter Total Experience" />
+      <mat-error *ngIf="editForm.get('totalExperience')?.hasError('required')">
+        Total Experience is required
+      </mat-error>
+      <mat-error *ngIf="editForm.get('totalExperience')?.hasError('pattern')">
+        Must be a valid number (up to 2 decimal places)
+      </mat-error>
+      <mat-error *ngIf="totalExperienceErrors?.['invalidExperience']">
+        Experience cannot be negative
+      </mat-error>
+      <mat-error *ngIf="totalExperienceErrors?.['experienceExceedsAge']">
+        Total experience exceeds allowable years based on student's age (16+)
+      </mat-error>
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()" [disabled]="!editForm.valid">Save</button>
+</mat-dialog-actions>

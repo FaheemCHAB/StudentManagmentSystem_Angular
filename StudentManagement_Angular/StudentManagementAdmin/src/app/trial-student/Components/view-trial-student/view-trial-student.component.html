@@ -1,0 +1,140 @@
+<style>
+  @media (min-width: 1200px) {
+    .col-xxl-5ths {
+      flex: 0 0 auto;
+      width: 20%;
+    }
+  }
+</style>
+
+<div  style="font-family: 'Playfair Display', serif;">
+  <h2 class="text-center mb-5 text-primary fw-bold" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; color: #5984f0;">Trial Students</h2>
+
+  <!-- 🔍 Search Input -->
+  <div class="search-bar-container mb-5 mx-auto" style="max-width: 600px;">
+    <div class="input-group shadow-sm rounded-pill overflow-hidden">
+      <span class="input-group-text bg-primary text-white border-0 px-4">
+        <i class="bi bi-search"></i>
+      </span>
+      <input
+        type="text"
+        class="form-control form-control-lg border-0"
+        placeholder="Search Student by name..."
+        (input)="onSearchInput($event)"
+      />
+    </div>
+
+    <div class="text-end mt-4">
+      <button class="btn btn-small rounded-pill text-white shadow"
+              style="background: linear-gradient(90deg, #007bff, #00c6ff);"
+              (click)="addNewStudent()">
+        <i class="bi bi-plus-circle-fill"></i> Add Trial Student
+      </button>
+    </div>
+  </div>
+
+  <!-- ❗ No Result Message -->
+  <div *ngIf="filteredStudents.length === 0" class="alert alert-warning text-center rounded-pill shadow-sm" role="alert">
+    <ng-container *ngIf="trialStudents.length > 0; else noStudents">
+      No students found matching "<strong>{{ searchTerm }}</strong>".
+    </ng-container>
+    <ng-template #noStudents>
+      <strong>No trial students available.</strong>
+    </ng-template>
+  </div>
+
+<!-- Table-->
+   <div class="table-responsive shadow-sm rounded-4">
+    <table class="table table-hover align-middle mb-0">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>🧑‍💼 Name</th>
+          <th>📧 Email</th>
+          <th>📞 Phone</th>
+          <th>📍 Address</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of filteredStudents; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td class="fw-bold text-success">{{ student.firstName }} {{ student.lastName }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.phone }}</td>
+          <td>{{ student.address }}</td>
+          <td class="text-center">
+            <button class="btn btn-primary btn-sm me-2" (click)="enrollStudent(student)">
+              Enroll
+            </button>
+            <button class="btn btn-outline-primary btn-sm rounded-circle me-1"
+                    (click)="editStudent(student)" title="Edit">
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-sm rounded-circle"
+                    (click)="deleteStudent(student.trialStudentId)" title="Delete">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <!-- 🧑‍🎓 Student Cards - 5 per row -->
+  <!-- <div class="row g-4">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xxl-5ths" *ngFor="let student of filteredStudents.slice().reverse()">
+      <div class="card h-100 border-0 shadow-lg rounded-4 bg-white">
+        <div class="card-body">
+          <h5 class="card-title text-success fw-bold"> 🧑‍💼{{ student.firstName }} {{ student.lastName }}</h5>
+          <p class="card-text text-secondary mb-1">
+            📧 <strong>Email:</strong> {{ student.email }}
+          </p>
+          <p class="card-text text-secondary mb-1">
+            📞 <strong>Phone:</strong> {{ student.phone }}
+          </p>
+          <p class="card-text text-secondary">
+            📍 <strong>Address:</strong> {{ student.address }}
+          </p>
+        </div>
+        <div class="card-footer bg-transparent border-0 d-flex justify-content-between">
+
+          
+          <div>
+<button class="btn btn-primary" (click)="enrollStudent(student)">
+  Enroll
+</button>
+          </div>
+          <div>
+            <button class="btn btn-outline-primary btn-sm rounded-circle shadow-sm"
+                    (click)="editStudent(student)" title="Edit">
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            <button class="btn btn-outline-danger btn-sm rounded-circle shadow-sm"
+                    (click)="deleteStudent(student.trialStudentId)" title="Delete">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Existing Trial Student List -->
+
+<ng-template #confirmEnrollmentDialog>
+  <h2 mat-dialog-title>Confirm Enrollment</h2>
+  <mat-dialog-content>
+    <p>
+      The student <b>{{ selectedStudent?.firstName }} {{ selectedStudent?.lastName }}</b> has
+      not paid the registration fee.
+    </p>
+    <p>Would you like to proceed with payment or enroll anyway?</p>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button color="primary" (click)="payNow()">Pay Now</button>
+    <button mat-button color="accent" (click)="enrollAnyway()">Enroll Anyway</button>
+    <button mat-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+</ng-template>
