@@ -1,0 +1,103 @@
+<mat-card class="batch-form-card">
+  <mat-card-header>
+    <mat-card-title class="form-title text-center">
+      <mat-icon class="me-2" style="vertical-align: middle;">edit</mat-icon>
+      Edit Batch
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form [formGroup]="batchForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Batch Name</mat-label>
+          <input matInput formControlName="batchName" required />
+          <mat-error *ngIf="batchForm.get('batchName')?.hasError('required')">
+            Batch Name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="form-row">
+        <label class="time-label">Batch Time</label>
+        <div class="time-period-row">
+          <!-- From Time -->
+          <mat-form-field appearance="outline" class="time-field">
+            <mat-label>From</mat-label>
+            <input matInput type="time" formControlName="batchTimeFrom" required />
+            <mat-error *ngIf="batchForm.get('batchTimeFrom')?.hasError('required')">
+              From time is required
+            </mat-error>
+          </mat-form-field>
+
+          <!-- From Period -->
+          <mat-form-field appearance="outline" class="period-field">
+            <mat-label>Period</mat-label>
+            <mat-select formControlName="batchTimeFromPeriod" required>
+              <mat-option value="AM">AM</mat-option>
+              <mat-option value="PM">PM</mat-option>
+            </mat-select>
+            <mat-error *ngIf="batchForm.get('batchTimeFromPeriod')?.hasError('required')">
+              Period is required
+            </mat-error>
+          </mat-form-field>
+
+          <!-- To Time -->
+          <mat-form-field appearance="outline" class="time-field">
+            <mat-label>To</mat-label>
+            <input matInput type="time" formControlName="batchTimeTo" required />
+            <mat-error *ngIf="batchForm.get('batchTimeTo')?.hasError('required')">
+              To time is required
+            </mat-error>
+          </mat-form-field>
+
+          <!-- To Period -->
+          <mat-form-field appearance="outline" class="period-field">
+            <mat-label>Period</mat-label>
+            <mat-select formControlName="batchTimeToPeriod" required>
+              <mat-option value="AM">AM</mat-option>
+              <mat-option value="PM">PM</mat-option>
+            </mat-select>
+            <mat-error *ngIf="batchForm.get('batchTimeToPeriod')?.hasError('required')">
+              Period is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Batch Description</mat-label>
+          <textarea
+            matInput
+            formControlName="batchDescription"
+            placeholder="Enter description"
+            rows="2"
+          ></textarea>
+        </mat-form-field>
+      </div>
+<div class="form-actions">
+  <button
+    mat-raised-button
+    type="submit"
+    [disabled]="batchForm.invalid"
+    class="update-btn"
+  >
+    <mat-icon>check_circle</mat-icon>
+    Update Batch
+  </button>
+
+  <button
+    mat-raised-button
+    type="button"
+    (click)="cancel()"
+    class="cancel-btn"
+  >
+    <mat-icon>cancel</mat-icon>
+    Cancel
+  </button>
+</div>
+
+    </form>
+  </mat-card-content>
+</mat-card>

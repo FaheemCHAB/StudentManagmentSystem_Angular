@@ -1,0 +1,88 @@
+
+<div class="same-width-box ">
+<div class="progress-wrapper">
+  <mat-progress-bar
+    mode="determinate"
+    [value]="progressValue"
+    color="primary"
+    class="progress-bar"
+  ></mat-progress-bar>
+
+  <div class="steps-container">
+    <div
+      *ngFor="let step of steps; let i = index"
+      class="step-circle"
+      [class.active]="i <= currentStep"
+      [style.left.%]="(i / (steps.length - 1)) * 100"
+    >
+      {{ i + 1 }}
+    </div>
+  </div>
+
+
+  <div class="step-labels">
+    <ng-container *ngFor="let step of steps; let i = index">
+      <div
+        *ngIf="i < steps.length - 1"
+        class="step-label"
+        [style.left.%]="((i + 0.5) / (steps.length - 1)) * 100"
+      >
+        {{ step.label }}
+      </div>
+    </ng-container>
+  </div>
+</div>
+</div>
+
+<form [formGroup]="courseDetailsForm" (ngSubmit)="onSubmit()" class="course-details-form">
+  <h2>Add Course Details</h2>
+
+  <div class="form-grid">
+    <mat-form-field appearance="outline">
+      <mat-label>Course</mat-label>
+      <mat-select formControlName="courseId" required>
+        <mat-option *ngFor="let course of courses" [value]="course.courseId">
+          {{ course.courseName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Batch</mat-label>
+      <mat-select formControlName="batchId">
+        <mat-option *ngFor="let batch of batches" [value]="batch.batchId">
+          {{ batch.batchName }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Time Slot</mat-label>
+      <input matInput formControlName="timeSlot" readonly>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mode</mat-label>
+      <mat-select formControlName="mode">
+        <mat-option *ngFor="let m of modeOptions" [value]="m">
+          {{ modeLabels[m] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select formControlName="status">
+        <mat-option *ngFor="let s of statusOptions" [value]="s">
+          {{ statusLabels[s] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="button-container">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!courseDetailsForm.valid">
+      Next
+    </button>
+  </div>
+</form>

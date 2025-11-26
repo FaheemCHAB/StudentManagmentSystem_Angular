@@ -1,0 +1,83 @@
+.batch-form-card {
+  max-width: 650px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+/* Form Title Styling */
+.form-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.form-icon {
+  font-size: 28px;
+  margin-right: 10px;
+  color: #1976d2;
+}
+
+/* Form Row Spacing */
+.form-row {
+  margin-bottom: 20px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.quarter-width {
+  width: 23%;
+}
+
+.time-grid {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+.time-label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+/* Remove "Period" label */
+.no-label .mat-form-field-label {
+  display: none !important;
+}
+
+/* Submit Button Styling */
+.form-actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+button[mat-raised-button] {
+  padding: 10px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 25px;
+  background-color: #1976d2;
+  transition: background-color 0.3s ease;
+}
+
+button[mat-raised-button]:hover {
+  background-color: #1565c0;
+}
+
+button[mat-raised-button][disabled] {
+  background-color: #b0bec5;
+}

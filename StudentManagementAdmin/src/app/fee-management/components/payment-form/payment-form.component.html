@@ -1,0 +1,86 @@
+<mat-card class="fee-form-card">
+    <mat-card-title class="form-title mat-primary"
+        style="color: rgb(17, 17, 142);font-size: xx-large;font-family: 'Times New Roman', Times, serif;">Fee
+        Payment</mat-card-title><br>
+
+    <form [formGroup]="feePaymentForm" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Student</mat-label>
+                <mat-select formControlName="studentProfileId" (selectionChange)="onStudentSelect($event.value)">
+                    <mat-select-trigger>
+                        {{ student?.firstName }} {{ student?.lastName }}
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let student of students" [value]="student.studentId">
+                        {{ student.firstName }} {{ student.lastName }} <br>
+                        <p style="color: rgb(132, 132, 143);font-size: smaller;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.studentReferenceId}}<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{student.address}}
+                        </p>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Course</mat-label>
+                <input matInput formControlName="courseName" readonly />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Joined Date</mat-label>
+                <input matInput formControlName="joinedDate" readonly />
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Due Date</mat-label>
+                <input matInput formControlName="dueDate" readonly />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Total Due Amount</mat-label>
+                <input matInput type="number" formControlName="dueAmount" readonly />
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Amount Received</mat-label>
+                <input matInput type="number" formControlName="amountReceived" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Payment Mode</mat-label>
+                <mat-select formControlName="paymentMode">
+                    <mat-option [value]="0">Cash</mat-option>
+                    <mat-option [value]="1">Card</mat-option>
+                    <mat-option [value]="2">Online</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Remarks</mat-label>
+                <input matInput type="text" formControlName="remarks" />
+            </mat-form-field>
+        </div>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Received Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="amountReceivedDate" [disabled]="true" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <div class="form-row" style="display: flex; justify-content: flex-end;">
+            <button mat-raised-button color="primary" type="submit">Submit</button>
+            <!-- <button mat-raised-button color="primary" type="button" (click)="allocation()">Allocate</button> -->
+        </div>
+    </form>
+</mat-card>

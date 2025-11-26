@@ -1,0 +1,111 @@
+<div class="sidebar bg-dark text-white d-flex flex-column">
+  <div class="sidebar-logo text-center py-2">
+   <img [src]="'assets/images/Aitrichlogo.png'" alt="Aitrich Logo" class="img-fluid" width="80" />
+
+  </div>
+
+  <ul class="nav flex-column pe-2">
+    <li class="nav-item">
+  <a class="nav-link d-flex align-items-center"
+     routerLink="/home/dashboard"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{ exact: true }">
+    <i class="bi bi-speedometer2 me-2"></i> Dashboard
+  </a>
+</li>
+    
+  <li class="nav-item">
+    <a class="nav-link d-flex align-items-center"
+       routerLink="/home/trialStudent/AddTrialStudent"
+       routerLinkActive="active">
+      <i class="bi bi-person-badge-fill me-2"></i> Trial Registration
+    </a>
+  </li>
+     <li class="nav-item">
+    <a class="nav-link d-flex align-items-center"
+       routerLink="/home/studentProfile/studentProfileHome"
+       routerLinkActive="active">
+      <i class="bi bi-person-check-fill me-2"></i> Enrollment
+    </a>
+  </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/trialStudent/ViewTrialStudent"
+      routerLinkActive="active">
+        <i class="bi bi-card-checklist me-2"></i> Register List
+      </a>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/course"
+      routerLinkActive="active">
+        <i class="bi bi-journal-bookmark-fill me-2"></i> Course
+      </a>
+    </li> -->
+
+     <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/qualification"
+      routerLinkActive="active">
+        <i class="bi bi-journal-bookmark-fill me-2"></i> Qualification
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/batch"
+      routerLinkActive="active">
+        <i class="bi bi-people-fill me-2"></i> Batch
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/college"
+      routerLinkActive="active">
+        <i class="bi bi-building me-2"></i> College
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/report"
+      routerLinkActive="active">
+        <i class="bi bi-bar-chart-fill me-2"></i> Report
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/mailDue"
+      routerLinkActive="active">
+        <i class="bi bi-envelope-fill me-2"></i> Pending Fees
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/feePayment/paymentForm"
+      routerLinkActive="active">
+        <i class="bi bi-cash-stack me-1"></i> Payment
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/feePayment/returnFeeForm"
+      routerLinkActive="active">
+        <i class="bi bi-arrow-repeat me-1"></i> Return Payment
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link text-dark d-flex align-items-center" 
+      routerLink="/home/feePayment/transaction"
+      routerLinkActive="active">
+        <i class="bi bi-clock-history me-2"></i> Transaction History
+      </a>
+    </li>
+  </ul>
+
+  <div class="mt-auto p-1">
+  <button type="button" class="btn btn-secondary w-100" (click)="logout()">
+    <i class="bi bi-box-arrow-right me-1"></i> Logout
+  </button>
+</div>
+</div>

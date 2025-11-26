@@ -1,0 +1,32 @@
+.fee-form-card {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 24px;
+  background-color: #f3f7fb;
+  border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  .full-width {
+    flex: 1;
+  }
+}
+
+.form-title {
+  color: #3f51b5;
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: xx-large;
+}
+
+::ng-deep .student-select-panel .mat-option {
+  height: auto;
+}
+
+.student-search-input {
+  margin: 4px 0;
+}

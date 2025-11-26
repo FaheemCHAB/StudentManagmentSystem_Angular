@@ -1,0 +1,10 @@
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-dialog-actions {
+  display: flex; /* Ensures proper flex behavior */
+  justify-content: flex-end;
+  gap: 10px; /* Adds spacing between buttons */
+}
