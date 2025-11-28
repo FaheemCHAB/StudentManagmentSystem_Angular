@@ -29,7 +29,7 @@ export class AdminLoginComponent {
 
     this.loading = true;
 
-    this.http.post<any>('https://localhost:7183/api/v1/login', this.loginForm.value)
+    this.http.post<any>('https://studentmanagment.runasp.net/api/v1/login', this.loginForm.value)
       .subscribe({
         next: (res) => {
           this.message = res?.message || 'Login successful';
